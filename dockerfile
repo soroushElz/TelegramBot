@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/TelegramBot-0.0.1-SNAPSHOT.jar TelegramBot.jar
+COPY --from=build usr/src/app/target/TelegramBot-0.0.1-SNAPSHOT.jar TelegramBot.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java","-jar","TelegramBot.jar"]
